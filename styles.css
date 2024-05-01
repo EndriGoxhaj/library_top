@@ -1,0 +1,152 @@
+@font-face {
+    font-family: playfair;
+    src: url(./Fonts/PlayfairDisplay-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: roboto;
+    src: url(./Fonts/Roboto-Regular.ttf);
+}
+body{
+    max-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 100px 1fr;
+    margin: 0;
+    font-family: playfair;
+    background-color: rgb(219, 216, 216);
+}
+.header{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-size: 3.5em;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+.addbook{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.addbookbtn{
+    height:65px;
+    width: 130px;
+    background-color: rgb(219, 216, 216);
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.library{
+    grid-column: 1/2;
+    grid-row: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+dialog{
+    border: none;
+    margin: none;
+    border-radius: 5px;
+    background-color: rgb(235, 116, 83);
+}
+form{
+    height: 400px;
+    width: 380px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 5px;
+    align-items: center;
+    border: none;
+    font-family: roboto;
+    background-color: rgb(235, 116, 83);
+
+}
+.formtitle{
+    font-size: 2em;
+    font-weight: 800;
+}
+.bookinfo{
+    height: 45px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+.booksubmit{
+    height: 45px;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+}
+.library{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 30px;
+}
+.bookcard{
+    height: 350px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    background:
+    linear-gradient(rgb(235, 116, 83) 0 0) left/8px   100% no-repeat,#ffffff;
+
+}
+.cardtitle{
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.cardauthor, .cardpages{
+    font-size: 1em;
+    font-family: roboto;
+    color: grey;
+}
+.cardpages{
+    margin-bottom: 20px;
+}
+.cardbutton, .cardread{
+    height: 35px;
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+    font-family: roboto;
+}
+/*Functionality*/
+input:focus{
+    outline: none;
+}
+.booksubmit:hover{
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+
+}
+.addbookbtn:hover{
+    cursor: pointer;
+    background-color: grey;
+}
+::backdrop {
+    background-color: black;
+    opacity: 0.75;
+  }
+  .cardread:hover, .cardbutton:hover{
+    cursor: pointer;
+    background-color: grey;
+  }
