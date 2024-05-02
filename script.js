@@ -10,8 +10,10 @@ const readinput = document.querySelector("#read");
 
 const myLibrary = [];
 
+
 function addBookToLibrary(){
     const newBook = new book(title, author, pages, read);
+    read = false;
     myLibrary.push(newBook);
     displayBook(newBook);
 }
@@ -27,7 +29,6 @@ function displayBook(book){
     cardTitle.classList.add("cardtitle");
     cardAuthor.classList.add("cardauthor");
     cardPages.classList.add("cardpages");
-    cardRead.classList.add("cardread");
     cardButton.classList.add("cardbutton");
 
     cardButton.textContent = "DELETE"
@@ -35,7 +36,14 @@ function displayBook(book){
     cardTitle.textContent = book.title;
     cardAuthor.textContent = book.author;
     cardPages.textContent = `${book.pages} pages`;
-    console.log(book.title);
+    if (document.getElementById('read').checked == true){
+        cardRead.textContent = "READ";
+        cardRead.classList.add("cardread");
+    }
+    else{
+        cardRead.textContent = "NOT READ"
+        cardRead.classList.add("cardnotread");
+    }
     library.appendChild(bookCard);
     bookCard.appendChild(cardTitle);
     bookCard.appendChild(cardAuthor);
@@ -48,7 +56,7 @@ function resetForm(){
     authorinput.value = "";
     pagesinput.value = "";
 }
-function book(title, author, pages, read){
+function book(title, author, pages, read = false){
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -63,6 +71,7 @@ form.addEventListener('submit', (e) =>{
     author = authorinput.value;
     pages = pagesinput.value;
     read = readinput.value;
+
     addBookToLibrary(titleinput, authorinput, pagesinput, readinput);
     resetForm();
     dialog.close();
