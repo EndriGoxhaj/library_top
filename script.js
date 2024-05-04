@@ -11,21 +11,20 @@ const readinput = document.querySelector("#read");
 const myLibrary = [];
 
 function book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+    this.title = titleinput.value;
+    this.author = authorinput.value;
+    this.pages = pagesinput.value;
+    this.read = readinput.checked;
 }
-const book1 = new book('The witcher', 'X', '200', '1');
-myLibrary.push(book1);
-displayBook(book1);
+/*const book1 = new book('The witcher', 'X', '200', '1');
+myLibrary.push(book1);*/
 
 function addBookToLibrary(){
     const newBook = new book(title, author, pages, read);
     myLibrary.push(newBook);
-    displayBook(newBook);
+    displaybooks();
 }
-function displayBook(book){
+function appendBook(book){
     const bookCard = document.createElement('div');
     const cardTitle = document.createElement('div');
     const cardAuthor = document.createElement('div');
@@ -34,6 +33,7 @@ function displayBook(book){
     const cardButton = document.createElement('button');
 
     bookCard.classList.add("bookcard");
+    bookCard.setAttribute('id', myLibrary.indexOf(book));
     cardTitle.classList.add("cardtitle");
     cardAuthor.classList.add("cardauthor");
     cardPages.classList.add("cardpages");
@@ -44,14 +44,23 @@ function displayBook(book){
     cardTitle.textContent = book.title;
     cardAuthor.textContent = book.author;
     cardPages.textContent = `${book.pages} pages`;
-    if (readinput.checked == true){
-        cardRead.textContent = "READ";
-        cardRead.classList.add("cardread");
-    }
-    else{
+    if (book.read === false){
         cardRead.textContent = "NOT READ"
         cardRead.classList.add("cardnotread");
     }
+    else{
+        cardRead.textContent = "READ";
+        cardRead.classList.add("cardread");
+    }
+
+    cardRead.addEventListener('click', ()=> {
+        book.read = !book.read;
+        displaybooks();
+    })
+    cardButton.addEventListener('click', () => {
+        myLibrary.splice(myLibrary.indexOf(book), 1);
+        displaybooks();
+    })
 
     library.appendChild(bookCard);
     bookCard.appendChild(cardTitle);
@@ -73,14 +82,16 @@ addbookbtn.addEventListener('click', () =>{
 })
 form.addEventListener('submit', (e) =>{
     e.preventDefault();
-    title = titleinput.value;
-    author = authorinput.value;
-    pages = pagesinput.value;
-    read = readinput.value;
-
-    addBookToLibrary(titleinput, authorinput, pagesinput, readinput);
+    addBookToLibrary(title, author, pages, read);
     resetForm();
     dialog.close();
 })
+function displaybooks(){
+    const books = document.querySelectorAll(".bookcard");
+    books.forEach(bookCard => library.removeChild(bookCard));
 
+    for(i = 0; i < myLibrary.length; i++){
+        appendBook(myLibrary[i]);
+    }
+}
 
