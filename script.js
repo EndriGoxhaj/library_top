@@ -11,14 +11,12 @@ const readinput = document.querySelector("#read");
 const myLibrary = [];
 
 function book(title, author, pages, read){
-    this.bookId = `book${++book.id}`;
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
 }
-book.id = 0;
-const book1 = new book('The witcher', 'X', '200', );
+const book1 = new book('The witcher', 'X', '200', '1');
 myLibrary.push(book1);
 displayBook(book1);
 
@@ -54,7 +52,6 @@ function displayBook(book){
         cardRead.textContent = "NOT READ"
         cardRead.classList.add("cardnotread");
     }
-    cardButton.onclick = remBook;
 
     library.appendChild(bookCard);
     bookCard.appendChild(cardTitle);
@@ -85,22 +82,5 @@ form.addEventListener('submit', (e) =>{
     resetForm();
     dialog.close();
 })
-
-function remBook() {
-    const bookId = this.parentElement.classList[1];
-  
-    const findBook = myLibrary.findIndex(
-      (element) => element.bookId === bookId
-    );
-    const delBook = myLibrary.splice(findBook, 1);
-    this.parentElement.remove();
-}
-function updatelibrary(library){
-    library.innerHTML = "";
-    console.log("hey");
-    myLibrary.forEach(function(book){
-        displayBook(book);
-    })
-}
 
 
