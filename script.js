@@ -16,8 +16,7 @@ function book(title, author, pages, read){
     this.pages = pagesinput.value;
     this.read = readinput.checked;
 }
-/*const book1 = new book('The witcher', 'X', '200', '1');
-myLibrary.push(book1);*/
+
 
 function addBookToLibrary(){
     const newBook = new book(title, author, pages, read);
