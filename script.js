@@ -10,16 +10,29 @@ const readinput = document.querySelector("#read");
 
 const myLibrary = [];
 
-function book(title, author, pages, read){
-    this.title = titleinput.value;
-    this.author = authorinput.value;
-    this.pages = pagesinput.value;
-    this.read = readinput.checked;
+//function book(title, author, pages, read){
+  //  this.title = titleinput.value;
+    //this.author = authorinput.value;
+    //this.pages = pagesinput.value;
+    //this.read = readinput.checked;
+//}
+
+class book{
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
+const theWitcher = new book('The Witcher', 'Andrzej Sapkowski', 500, false);
+myLibrary.push(theWitcher);
+displaybooks();
+
 
 
 function addBookToLibrary(){
-    const newBook = new book(title, author, pages, read);
+    const newBook = new book(titleinput.value, authorinput.value, pagesinput.value, readinput.checked);
     myLibrary.push(newBook);
     displaybooks();
 }
@@ -73,6 +86,7 @@ function resetForm(){
     titleinput.value = "";
     authorinput.value = "";
     pagesinput.value = "";
+    readinput.checked = false;
 }
 
 
